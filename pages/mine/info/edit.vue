@@ -3,14 +3,17 @@
     <view class="example">
       <uni-forms ref="form" :model="user" labelWidth="80px">
         <uni-forms-item label="用户昵称" name="nickName">
-          <uni-easyinput v-model="user.nickName" placeholder="请输入昵称" />
+          <uni-easyinput v-model="user.name" placeholder="请输入昵称" />
         </uni-forms-item>
         <uni-forms-item label="手机号码" name="phonenumber">
-          <uni-easyinput v-model="user.phonenumber" placeholder="请输入手机号码" />
+          <uni-easyinput v-model="user.phoneNum" placeholder="请输入手机号码" />
         </uni-forms-item>
         <uni-forms-item label="邮箱" name="email">
-          <uni-easyinput v-model="user.email" placeholder="请输入邮箱" />
+          <uni-easyinput v-model="user.Email" placeholder="请输入邮箱" />
         </uni-forms-item>
+				<uni-forms-item label="年级" name="grade">
+				  <uni-easyinput v-model="user.grade" placeholder="请输入年级" />
+				</uni-forms-item>
         <uni-forms-item label="性别" name="sex" required>
           <uni-data-checkbox v-model="user.sex" :localdata="sexs" />
         </uni-forms-item>
@@ -28,28 +31,29 @@
     data() {
       return {
         user: {
-          nickName: "",
-          phonenumber: "",
-          email: "",
-          sex: ""
+        	name: "吴系挂",
+        	phoneNum: "123456789" ,
+        	Email: "123@163.com",
+        	grade: "大三",
+					sex:1
         },
         sexs: [{
           text: '男',
-          value: "0"
+          value: 0
         }, {
           text: '女',
-          value: "1"
+          value: 1
         }],
         rules: {
           nickName: {
             rules: [{
-              required: true,
+              required: false,
               errorMessage: '用户昵称不能为空'
             }]
           },
           phonenumber: {
             rules: [{
-              required: true,
+              required: false,
               errorMessage: '手机号码不能为空'
             }, {
               pattern: /^1[3|4|5|6|7|8|9][0-9]\d{8}$/,
@@ -58,7 +62,7 @@
           },
           email: {
             rules: [{
-              required: true,
+              required: false,
               errorMessage: '邮箱地址不能为空'
             }, {
               format: 'email',
@@ -69,7 +73,7 @@
       }
     },
     onLoad() {
-      this.getUser()
+      // this.getUser()
     },
     onReady() {
       this.$refs.form.setRules(this.rules)

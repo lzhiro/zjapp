@@ -2,7 +2,7 @@
   <view class="work-container">
     <!-- 轮播图 -->
     <uni-swiper-dot class="uni-swiper-dot-box" :info="data" :current="current" field="content">
-      <swiper class="swiper-box" :current="swiperDotIndex" @change="changeSwiper">
+      <swiper class="swiper-box" :current="swiperDotIndex" @change="changeSwiper" circular>
         <swiper-item v-for="(item, index) in data" :key="index">
           <view class="swiper-item" @click="clickBannerItem(item)">
             <image :src="item.image" mode="aspectFill" :draggable="false" />
@@ -80,15 +80,16 @@
       return {
         current: 0,
         swiperDotIndex: 0,
-        data: [{
-            image: '/static/images/banner/banner01.jpg'
-          },
-          {
-            image: '/static/images/banner/banner02.jpg'
-          },
-          {
-            image: '/static/images/banner/banner03.jpg'
-          }
+        data: [
+					{
+					  image: '/static/images/banner/banner04.jpg'
+					},
+					{
+					  image: '/static/images/banner/banner05.jpg'
+					},
+					{
+					  image: '/static/images/banner/banner06.jpg'
+					}
         ]
       }
     },

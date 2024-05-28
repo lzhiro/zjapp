@@ -67,6 +67,10 @@
           updateUserPwd(this.user.oldPassword, this.user.newPassword).then(response => {
             this.$modal.msgSuccess("修改成功")
           })
+					 .catch(error => {
+					          if (error.response.status === 401)
+											this.$modal.msgError("旧密码错误")
+					        }) 
         })
       }
     }
